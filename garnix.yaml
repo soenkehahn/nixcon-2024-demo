@@ -1,0 +1,9 @@
+servers:
+  - configuration: backend
+    deployment:
+      type: on-branch
+      branch: main
+  - configuration: frontend
+    deployment:
+      type: on-branch
+      branch: main
