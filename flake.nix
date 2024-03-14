@@ -137,6 +137,15 @@
           backend = mkHaskellApp ./src/backend.hs;
           frontend = mkHaskellApp ./src/frontend.hs;
         };
+        checks = {
+          noTodosAllowed = pkgs.runCommand "no-todos" { } ''
+            if grep -inr todo ${./src} ; then
+              echo no todos allowed!
+              exit 1
+            fi
+            touch $out
+          '';
+        };
       }
     );
 }
